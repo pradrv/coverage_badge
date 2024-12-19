@@ -33,6 +33,7 @@ jobs:
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git status
         git add my-python-app/coverage.svg
         git commit -m 'Update coverage badge'
         git push
