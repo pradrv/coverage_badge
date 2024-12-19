@@ -29,10 +29,12 @@ jobs:
       run: |
         coverage-badge -o my-python-app/coverage.svg -f
 
-    - name: Upload coverage report
-      uses: codecov/codecov-action@v1
-      with:
-        file: ./coverage.xml
-        flags: unittests
-        name: codecov-umbrella
-        fail_ci_if_error: true
+    - name: Commit coverage badge
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add my-python-app/coverage.svg
+        git commit -m 'Update coverage badge'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
