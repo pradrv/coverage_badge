@@ -34,9 +34,6 @@ jobs:
         # Create or switch to gh-pages branch
         git checkout --orphan gh-pages
     
-        # Clean up all files to ensure only the badge is included
-        git reset --hard
-        git clean -fdx
     
         # Copy or move the generated badge
         mv coverage.svg index.html
@@ -44,6 +41,10 @@ jobs:
         # Add and commit only index.html
         git add index.html
         git commit -m "GitHub Actions: Deploy test coverage badge for commit $GITHUB_SHA to gh-pages branch"
+
+        # Clean up all files to ensure only the badge is included
+        git reset --hard
+        git clean -fdx
     
         # Force push the gh-pages branch
         git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
