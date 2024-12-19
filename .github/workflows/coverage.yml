@@ -24,6 +24,7 @@ jobs:
       run: |
         pytest --cov=src --cov-report=html --cov-report=json my-python-app/tests/
         coverage-badge -o coverage.svg
+        pwd
 
     - name: Deploy badge to gh-pages
       run: |
@@ -32,6 +33,7 @@ jobs:
         git checkout --orphan gh-pages
         git reset --hard
         git clean -fdx
+        pwd
         mv ../coverage.svg index.html  # move the badge before cleaning
         git add .
         git commit -m "GitHub Actions: Deploy test coverage badge for commit $GITHUB_SHA to gh-pages branch"
