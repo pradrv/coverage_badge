@@ -32,11 +32,8 @@ jobs:
         git config --global user.name "${{ github.actor }}"
         git config --global user.email "${{ github.actor }}@users.noreply.github.com"
         git checkout --orphan gh-pages
-        git reset --hard
-        git clean -fdx
-        pwd
-        ls -lrt
-        mv /coverage.svg index.html  # move the badge before cleaning
+        mv coverage.svg index.html  # optional, ensures visibility of badge
+        git add coverage.svg index.html
         git add .
         git commit -m "GitHub Actions: Deploy test coverage badge for commit $GITHUB_SHA to gh-pages branch"
         git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
