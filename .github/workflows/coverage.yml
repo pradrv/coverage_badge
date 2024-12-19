@@ -37,7 +37,11 @@ jobs:
         pwd
         ls -lrt
         mv coverage.svg index.html  # optional, ensures visibility of badge
+        pwd
+        ls -lrt
         git add coverage.svg index.html
+        pwd
+        ls -lrt
         git reset --hard
         git clean -fdx
         pwd
