@@ -39,7 +39,7 @@ jobs:
         mv coverage.svg index.html  # optional, ensures visibility of badge
         pwd
         ls -lrt
-        git add coverage.svg index.html
+        git add index.html
         pwd
         ls -lrt
         git reset --hard
