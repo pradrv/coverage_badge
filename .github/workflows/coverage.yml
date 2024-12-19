@@ -40,12 +40,12 @@ jobs:
         pwd
         ls -lrt
         git add index.html
+        git status
         pwd
         ls -lrt
         git reset --hard
         git clean -fdx
         pwd
         ls -lrt
-        git add .
         git commit -m "GitHub Actions: Deploy test coverage badge for commit $GITHUB_SHA to gh-pages branch"
         git push --force "https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" gh-pages
