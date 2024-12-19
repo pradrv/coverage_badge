@@ -43,8 +43,6 @@ jobs:
         git status
         pwd
         ls -lrt
-        git reset --hard
-        git clean -fdx
         pwd
         ls -lrt
         git commit -m "GitHub Actions: Deploy test coverage badge for commit $GITHUB_SHA to gh-pages branch"
