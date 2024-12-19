@@ -1,4 +1,3 @@
-# filepath: /workspaces/coverage_badge/.github/workflows/coverage.yml
 name: Python Test Coverage
 
 on: [push, pull_request]
@@ -29,13 +28,16 @@ jobs:
       run: |
         coverage-badge -o my-python-app/coverage.svg -f
 
+    - name: Check git status
+      run: |
+        git status
+
     - name: Commit coverage badge
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-        git status
         git add my-python-app/coverage.svg
-        git commit -m 'Update coverage badge'
+        git commit -m 'Update coverage badge' || echo "No changes to commit"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
