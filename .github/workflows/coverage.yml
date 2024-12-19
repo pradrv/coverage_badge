@@ -1,3 +1,4 @@
+# filepath: /workspaces/coverage_badge/.github/workflows/coverage.yml
 name: Python Test Coverage
 
 on: [push, pull_request]
@@ -19,11 +20,14 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r my-python-app/requirements.txt
-        pip install pytest pytest-cov
 
     - name: Run tests with coverage
       run: |
-        pytest --cov=my-python-app tests/
+        pytest --cov=src my-python-app/tests/
+
+    - name: Generate coverage badge
+      run: |
+        coverage-badge -o my-python-app/coverage.svg -f
 
     - name: Upload coverage report
       uses: codecov/codecov-action@v1
