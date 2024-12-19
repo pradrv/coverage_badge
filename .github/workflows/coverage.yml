@@ -23,7 +23,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        pytest --cov=src tests/
+        pytest --cov=my-python-app tests/
 
     - name: Upload coverage report
       uses: codecov/codecov-action@v1
